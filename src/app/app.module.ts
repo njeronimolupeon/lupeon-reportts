@@ -7,6 +7,7 @@ import { ReportOneComponent } from './Components/report-one/report-one.component
 import { NgxPaginationModule } from 'ngx-pagination';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalFiltroComponent } from './Components/modal-filtro/modal-filtro.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ModalFiltroComponent } from './Components/modal-filtro/modal-filtro.com
     AppRoutingModule,
     NgxPaginationModule,
     HttpClientModule,
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

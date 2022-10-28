@@ -1,6 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Chart, registerables } from 'chart.js';
+import { Chart, registerables, ChartConfiguration } from 'chart.js';
 import { PostService } from 'src/app/post.service';
+// import 'chartjs-plugin-datalabels';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+import plugin from 'chartjs-plugin-datalabels';
 
 
 @Component({
@@ -25,24 +28,51 @@ export class ReportOneComponent implements OnInit {
   tableSize: number = 7;
   tableSizes: any = [3, 6, 9, 12];
 
-
   constructor(private postService: PostService) {
     Chart.register(...registerables);
-
+    Chart.register(ChartDataLabels);
   }
+
+  // Doughnut
+  // public doughnutChartLabels: string[] = [ 'Download Sales', 'In-Store Sales', 'Mail-Order Sales' ];
+  // public doughnutChartDatasets: ChartConfiguration<'doughnut'>['data']['datasets'] = [
+  //     { data: [ 350, 450, 100 ], label: 'Series A' },
+  //   ];
+
+  // public doughnutChartOptions: ChartConfiguration<'doughnut'>['options'] = {
+  //   responsive: false,
+  //   cutout: 50,
+  //   plugins:{
+  //     datalabels:{
+  //       formatter: (value, ctx) => {
+  //         let sum = 0;
+  //         let dataArr: any[] = ctx.chart.data.datasets[0].data;
+  //         dataArr.map((data: number) => {
+  //           sum += data;
+  //         });
+  //         let percentage = (value * 100 / sum).toFixed(2) + "%";
+  //         return percentage;
+  //       },
+  //     }
+  //   }
+  // };
 
   ngOnInit(): void {
 
     this.fetchPosts();
 
+    // Doughnut
+
 
     new Chart(this.elemento.nativeElement, {
       type:'doughnut',
+
       data:{
         labels: ["Janeiro", "Fevereiro"],
         datasets: [{
           backgroundColor: ['#0A2C5B', '#126CFB'],
-
+          hoverBackgroundColor: ['#0A2C5B' ,'#126CFB'],
+          hoverBorderColor: ['#0A2C5B' ,'#126CFB'],
           data: [300, 50],
         }],
 
@@ -58,7 +88,21 @@ export class ReportOneComponent implements OnInit {
             },
             legend: {
                 display: false,
-            }
+            },
+
+            datalabels:{
+              formatter: (value, ctx) => {
+                let sum = 0;
+                let dataArr: any[] = ctx.chart.data.datasets[0].data;
+                dataArr.map((data: number) => {
+                  sum += data;
+                });
+                let percentage = (value * 100 / sum).toFixed(2) + "%";
+                return percentage;
+              },
+              color: 'white'
+            },
+
         },
         interaction: {
             intersect: false,
@@ -87,7 +131,11 @@ export class ReportOneComponent implements OnInit {
       labels: labelsLinha,
       datasets: [{
           backgroundColor: ['#0A2C5B'],
-
+          hoverBackgroundColor: ['#0A2C5B' ,'#126CFB'],
+          hoverBorderColor: ['#0A2C5B' ,'#126CFB'],
+          pointBorderColor: '#126CFB',
+          pointBackgroundColor: '#126CFB',
+          borderColor:'#126CFB',
           data: [43.568, 202.751, 266.194, 193.459, 224.604, 294.426, 249.728],
     }]
     };
@@ -105,14 +153,24 @@ export class ReportOneComponent implements OnInit {
               },
               legend: {
                   display: false,
+                  labels:{
+                    font:{
+                      size: 9
+                    }
+                  }
               },
-          },
+              datalabels:{
+                font:{
+                  size: 10,
+                },
+              }
+            },
           interaction: {
               intersect: false,
           },
           scales: {
               x: {
-                  display: true,
+                  display: false,
               },
               y: {
                   display: false,
@@ -133,8 +191,12 @@ export class ReportOneComponent implements OnInit {
       const dataLinha2 = {
       labels: labelsLinha2,
       datasets: [{
-          backgroundColor: ['#0A2C5B'],
-
+        backgroundColor: ['#0A2C5B'],
+        hoverBackgroundColor: ['#0A2C5B' ,'#126CFB'],
+        hoverBorderColor: ['#0A2C5B' ,'#126CFB'],
+        pointBorderColor: '#126CFB',
+        pointBackgroundColor: '#126CFB',
+        borderColor:'#126CFB',
           data: [43.568, 202.751, 266.194, 193.459, 224.604, 294.426, 249.728],
     }]
     };
@@ -159,7 +221,7 @@ export class ReportOneComponent implements OnInit {
           },
           scales: {
               x: {
-                  display: true,
+                  display: false,
               },
               y: {
                   display: false,
@@ -183,8 +245,14 @@ export class ReportOneComponent implements OnInit {
           labels: labelsColunas,
             datasets: [{
               backgroundColor: ['#0A2C5B'],
+          hoverBackgroundColor: ['#0A2C5B' ,'#126CFB'],
+          hoverBorderColor: ['#0A2C5B' ,'#126CFB'],
+          pointBorderColor: '#126CFB',
+          pointBackgroundColor: '#126CFB',
+          borderColor:'#126CFB',
               data: [43.568, 202.751, 266.194, 193.459, 224.604, 294.426, 249.728],
 
+              fill:false
         }]
       };
 
@@ -193,6 +261,7 @@ export class ReportOneComponent implements OnInit {
         data: dataLinhas3,
         options: {
             plugins: {
+
                 filler: {
                     propagate: false,
                 },
@@ -201,7 +270,25 @@ export class ReportOneComponent implements OnInit {
                 },
                 legend: {
                     display: false,
+                    labels:{
+                      boxWidth: 6,
+                      font:{
+                        size:8.5
+                      }
+                    }
                 },
+                datalabels:{
+                  formatter: (value, ctx) => {
+                    let sum = 0;
+                    let dataArr: any[] = ctx.chart.data.datasets[0].data;
+                    dataArr.map((data: number) => {
+                      sum += data;
+                    });
+                    let percentage = (value * 100 / sum).toFixed(2) + "%";
+                    return percentage;
+                  },
+                  color: '#66666'
+                }
             },
             interaction: {
                 intersect: false,
@@ -230,7 +317,9 @@ export class ReportOneComponent implements OnInit {
         labels: labelsPizza,
         datasets: [{
             backgroundColor: ['#0A2C5B','#136CFB', '#5CC4FF', 'rgba(19, 108, 251, 0.2)', '#00FFC4'],
-
+            // borderColor: '#136CFB',
+            hoverBackgroundColor: ['#0A2C5B','#136CFB', '#5CC4FF', 'rgba(19, 108, 251, 0.2)', '#00FFC4'],
+            hoverBorderColor: ['#0A2C5B','#136CFB', '#5CC4FF', 'rgba(19, 108, 251, 0.2)', '#00FFC4'],
             data: [443.568, 266.194, 202.751, 193.459, 224.600],
         }]
         };
@@ -249,6 +338,24 @@ export class ReportOneComponent implements OnInit {
                   legend: {
                       display: true,
                       position: 'bottom',
+                      labels:{
+                        boxWidth: 6,
+                        font:{
+                          size:8.5
+                        }
+                      }
+                  },
+                  datalabels:{
+                    formatter: (value, ctx) => {
+                      let sum = 0;
+                      let dataArr: any[] = ctx.chart.data.datasets[0].data;
+                      dataArr.map((data: number) => {
+                        sum += data;
+                      });
+                      let percentage = (value * 100 / sum).toFixed(2) + "%";
+                      return percentage;
+                    },
+                    color: 'white'
                   }
               },
               interaction: {
@@ -280,6 +387,8 @@ export class ReportOneComponent implements OnInit {
           labels: labelsColum2,
           datasets: [{
               backgroundColor: ['#0A2C5B','#136CFB', '#5CC4FF', 'rgba(19, 108, 251, 0.2)', '#00FFC4'],
+              hoverBackgroundColor: ['#0A2C5B','#136CFB', '#5CC4FF', 'rgba(19, 108, 251, 0.2)', '#00FFC4'],
+            hoverBorderColor: ['#0A2C5B','#136CFB', '#5CC4FF', 'rgba(19, 108, 251, 0.2)', '#00FFC4'],
               data: [708.029, 419.743, 346.958, 243.000, 200.600],
           }]
           };

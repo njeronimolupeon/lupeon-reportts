@@ -14,9 +14,9 @@
 <div class="corpo_container_header_figma">
   <div class="corpo_header_titulo_design">
 
-      <p class="font-tamanho-tt p_gerenciar_chamados">Torre de fretes</p>
+      <h4 class="font-tamanho-tt p_gerenciar_chamados">Torre de fretes</h4>
       <div class="corpo_imgfundo_header_figma">
-          <img src="../../../assets/img/logo-mobile.png" alt="Logo" width="80px"/>
+          <img src="../../../assets/img/logo.svg" alt="Logo" width="110px" height="35px"/>
       </div>
   </div>
   <div class="periodo">
@@ -31,10 +31,18 @@
   </div>
 </div>
 
+<!-- <canvas baseChart
+        [labels]="doughnutChartLabels"
+        [datasets]="doughnutChartDatasets"
+        [options]="doughnutChartOptions"
+        [legend]="true"
+        [type]="'doughnut'">
+</canvas> -->
+
 <div class="container_header_charts">
   <div class="container_chart1">
-      <div style="width: 100%; text-align:center; font-size: 0.775rem;">
-          <label>Tipo Operação</label>
+      <div style="width: 100%; text-align:center; font-size: 0.775rem; margin-bottom: 1rem;">
+          <h4>Tipo Operação</h4>
       </div>
 
       <div class="container_grafic_tipoOperacao">
@@ -53,12 +61,18 @@
   <div class="container_chart_">
       <div class="corpo_container_grafic_card_figma_2_">
           <div style="width: 100%;">
-              <div class="titulo_grafic_somafrete">
-                  <label>Soma de frete</label>
+              <div class="titulo_grafic_somafrete" style="font-size: 0.775rem;">
+                  <h4>Acumulado R$ Frete</h4>
               </div>
-              <div class="myChart_figma_linha">
-                  <!-- <canvas id="myChartLinha" height="75px"></canvas> -->
-                  <canvas #myChartLinha id="myChartLinha" height="75px"></canvas>
+              <div class="container_grafic_linha1">
+                <div class="desc-chart1">
+                  <h3>34 567</h3>
+                  <div class="porcentagem_grafic" style="background-color: var(--danger); color:white">
+                    <img src="../../../assets/img/seta_baixo_figma.svg" alt=""><b> -4%</b></div>
+                </div>
+                <div class="myChart_figma_linha" style="margin-top: 1rem;">
+                    <canvas #myChartLinha id="myChartLinha" height="90px"></canvas>
+                </div>
               </div>
           </div>
 
@@ -67,11 +81,19 @@
 
       <div class="corpo_container_grafic_card_figma_2_"  style="margin-top: 0.4rem;">
           <div>
-              <div class="titulo_grafic_somafrete">
-                  <label>Soma de % Frete</label>
+
+              <div class="titulo_grafic_somafrete" style="font-size: 0.775rem;">
+                  <h4>Acumulado % Custo de Frete</h4>
               </div>
-              <div class="myChart_figma_linha">
-                  <canvas #myChartLinha2 id="myChartLinha2" height="75px"></canvas>
+              <div class="container_grafic_linha1">
+                <div class="desc-chart1">
+                  <h3>34 567</h3>
+                  <div class="porcentagem_grafic" style="background-color: #0c6bff; color:white">
+                    <img src="../../../assets/img/seta_cima_figma.svg" alt=""> <b> 4%</b></div>
+                </div>
+                <div class="myChart_figma_linha" style="margin-top: 1rem;">
+                  <canvas #myChartLinha2 id="myChartLinha2" height="90px"></canvas>
+                </div>
               </div>
           </div>
       </div>
@@ -79,19 +101,19 @@
 
   <div class="container_chart">
       <div style="width: 100%; text-align:center; font-size: 0.775rem;">
-          <label>Fretes</label>
+          <h4>Fretes</h4>
       </div>
 
-      <div class="container_grafic_tipoOperacao">
-          <div class="myChart_figma_linha">
-              <canvas #myChartColunas id="myChartColunas" height="240px"></canvas>
+      <div class="container_grafic_tipoOperacao" style="height: 100%">
+          <div class="myChart_figma_fretes" style="height: 100%;">
+              <canvas #myChartColunas id="myChartColunas" height="265px"></canvas>
           </div>
       </div>
   </div>
 
   <div class="container_chart">
       <div class="container_grafic_tipoOperacao">
-          <div style="width: 95%;">
+          <div style="width: 100%;">
               <canvas #myChartPizza id="myChartPizza"></canvas>
           </div>
       </div>
@@ -213,34 +235,10 @@
   </div>
 </div>
 
-<div class="container_mapas">
-  <div class="container_mapa"></div>
-  <div class="container_mapa"></div>
-</div>
-
-<!-- <button >
-  Mostrar modal
-</button> -->
-
 <app-modal-filtro #modal>
   <button
     (click)="modal.toggle();"
     class="btn-danger btn p-1">Fechar</button>
-
-  <!-- <h1>Lorem, ipsum dolor.</h1>
-  <p>
-    Lorem ipsum, dolor sit amet
-    consectetur adipisicing elit.
-    Earum dicta non alias distinctio,
-    aliquid aperiam ipsum provident
-    quae nihil voluptatibus veniam
-    fuga similique facilis consequatur
-    reiciendis recusandae. Velit magni
-    distinctio corporis eaque ad itaque
-    ex impedit accusamus. Debitis pariatur
-    cum quam rerum reprehenderit quod
-    iure, in explicabo facere vero nemo?
-  </p> -->
 
   <h5 class="h5">Filtro</h5>
 
