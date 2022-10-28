@@ -1,0 +1,25 @@
+.modal_ {
+  background: #fff;
+  width: 20%;
+  position: fixed;
+  right: 0px;
+  padding: 24px;
+  top: 0px;
+  height: 100vh;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 5px 15px;
+  z-index: 11;
+  transition: 0.2s all;
+}
+
+/* .overlay {
+  background: #000;
+  height: 100vh;
+  left: 0;
+  opacity: 0.5;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 10;
+} */
+
+

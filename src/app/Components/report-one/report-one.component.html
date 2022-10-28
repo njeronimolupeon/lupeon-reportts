@@ -1,0 +1,312 @@
+
+
+
+
+
+<!-- <div id="myChart">
+  Oi to aqui
+  <canvas #meuCanvas id="canvas" height="500px"></canvas>
+</div> -->
+
+<body>
+
+
+<div class="corpo_container_header_figma">
+  <div class="corpo_header_titulo_design">
+
+      <p class="font-tamanho-tt p_gerenciar_chamados">Torre de fretes</p>
+      <div class="corpo_imgfundo_header_figma">
+          <img src="../../../assets/img/logo-mobile.png" alt="Logo" width="80px"/>
+      </div>
+  </div>
+  <div class="periodo">
+      <p>25/10/2022 à 30/10/2022</p>
+  </div>
+  <div class="container_pesquisa_header_figma">
+      <div class="corpo_pesquisa_header_figma" style="width: 100%;">
+          <button type="submit" (click)="modal.toggle()" class="btn_lupa_header_figma" id="filtro" name="filtro" value="0">
+              <img src="../../../assets/img/search.svg" width="20px" />
+          </button>
+      </div>
+  </div>
+</div>
+
+<div class="container_header_charts">
+  <div class="container_chart1">
+      <div style="width: 100%; text-align:center; font-size: 0.775rem;">
+          <label>Tipo Operação</label>
+      </div>
+
+      <div class="container_grafic_tipoOperacao">
+          <div class="classificacao_grafic_tipoOperacao">
+              <p style="background-color: #0A2C5B;">Remessa</p>
+              <p style="background-color: #126CFB;">Reversa</p>
+              <p style="background-color: #5CC4FF;">Transferência</p>
+          </div>
+          <div class="myChart_figma">
+            <canvas #meuCanvasOne id="myChart"></canvas>
+          </div>
+
+      </div>
+  </div>
+
+  <div class="container_chart_">
+      <div class="corpo_container_grafic_card_figma_2_">
+          <div style="width: 100%;">
+              <div class="titulo_grafic_somafrete">
+                  <label>Soma de frete</label>
+              </div>
+              <div class="myChart_figma_linha">
+                  <!-- <canvas id="myChartLinha" height="75px"></canvas> -->
+                  <canvas #myChartLinha id="myChartLinha" height="75px"></canvas>
+              </div>
+          </div>
+
+
+      </div>
+
+      <div class="corpo_container_grafic_card_figma_2_"  style="margin-top: 0.4rem;">
+          <div>
+              <div class="titulo_grafic_somafrete">
+                  <label>Soma de % Frete</label>
+              </div>
+              <div class="myChart_figma_linha">
+                  <canvas #myChartLinha2 id="myChartLinha2" height="75px"></canvas>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="container_chart">
+      <div style="width: 100%; text-align:center; font-size: 0.775rem;">
+          <label>Fretes</label>
+      </div>
+
+      <div class="container_grafic_tipoOperacao">
+          <div class="myChart_figma_linha">
+              <canvas #myChartColunas id="myChartColunas" height="240px"></canvas>
+          </div>
+      </div>
+  </div>
+
+  <div class="container_chart">
+      <div class="container_grafic_tipoOperacao">
+          <div style="width: 95%;">
+              <canvas #myChartPizza id="myChartPizza"></canvas>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="container_filtros">
+  <button class="btn_fechar">
+      <img src="/fechar.png" alt="">
+  </button>
+</div>
+
+<div class="container_grafic_top_5">
+  <div class="container_white_grafic_top_5">
+      <div class="container_grafic_tipoOperacao">
+          <div style="width: 95%;">
+              <canvas #myChartColum2 id="myChartColum2" height="50px"></canvas>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="container_grafic_top_5">
+  <div class="container_white_grafic_top_5">
+      <div class="container_grafic_tipoOperacao">
+          <div style="width: 95%;">
+            <!-- <div #mapa id="mapa" style="height: 600px; width: 600px"></div> -->
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="container_relatorios_paginados">
+  <div class="relatorio_paginado">
+
+    <table class="table">
+      <thead class="container_th_linha_table">
+        <tr>
+          <th class="th_linha_table">Rótulos de Linha</th>
+          <th class="th_linha_table">Qtde</th>
+          <th class="th_linha_table">Soma de Mercadoria</th>
+          <th class="th_linha_table">Soma de Frete</th>
+          <th class="th_linha_table">Soma de % Frete/NF</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let post of POSTS
+              | paginate
+                : {
+                    itemsPerPage: tableSize,
+                    currentPage: page,
+                    totalItems: count
+                  };
+            let i = index
+          "
+         >
+          <th class="td_linha_table" scope="row">{{ post.id }}</th>
+          <td class="td_linha_table">{{ post.id }}</td>
+          <td class="td_linha_table">{{ post.id }}</td>
+          <td class="td_linha_table">{{ post.id }}</td>
+          <td class="td_linha_table">{{ post.id }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-center pagination">
+      <pagination-controls
+        previousLabel="Anterior"
+        nextLabel="Próximo"
+        (pageChange)="onTableDataChange($event)"
+      >
+      </pagination-controls>
+    </div>
+  </div>
+
+  <div class="relatorio_paginado">
+
+
+    <table class="table">
+      <thead class="container_th_linha_table">
+        <tr>
+          <th class="th_linha_table">Rótulos de Linha</th>
+          <th class="th_linha_table">Qtde</th>
+          <th class="th_linha_table">Soma de Mercadoria</th>
+          <th class="th_linha_table">Soma de Frete</th>
+          <th class="th_linha_table">Soma de % Frete/NF</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let post of POSTS
+              | paginate
+                : {
+                    itemsPerPage: tableSize,
+                    currentPage: page,
+                    totalItems: count
+                  };
+            let i = index
+          "
+         >
+          <th class="td_linha_table" scope="row">{{ post.id }}</th>
+          <td class="td_linha_table">{{ post.id }}</td>
+          <td class="td_linha_table">{{ post.id }}</td>
+          <td class="td_linha_table">{{ post.id }}</td>
+          <td class="td_linha_table">{{ post.id }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-center pagination">
+      <pagination-controls
+        previousLabel="Anterior"
+        nextLabel="Próximo"
+        (pageChange)="onTableDataChange($event)"
+      >
+      </pagination-controls>
+    </div>
+  </div>
+</div>
+
+<div class="container_mapas">
+  <div class="container_mapa"></div>
+  <div class="container_mapa"></div>
+</div>
+
+<!-- <button >
+  Mostrar modal
+</button> -->
+
+<app-modal-filtro #modal>
+  <button
+    (click)="modal.toggle();"
+    class="btn-danger btn p-1">Fechar</button>
+
+  <!-- <h1>Lorem, ipsum dolor.</h1>
+  <p>
+    Lorem ipsum, dolor sit amet
+    consectetur adipisicing elit.
+    Earum dicta non alias distinctio,
+    aliquid aperiam ipsum provident
+    quae nihil voluptatibus veniam
+    fuga similique facilis consequatur
+    reiciendis recusandae. Velit magni
+    distinctio corporis eaque ad itaque
+    ex impedit accusamus. Debitis pariatur
+    cum quam rerum reprehenderit quod
+    iure, in explicabo facere vero nemo?
+  </p> -->
+
+  <h5 class="h5">Filtro</h5>
+
+  <div class="container_dropdowns">
+    <div class="dropdown">
+      <label for="">Tipo CTE</label>
+      <select name="embarcador" >
+
+        <option value="AL">Tipo 1</option>
+        <option value="WY">Tipo 2</option>
+      </select>
+
+      <label for="">Tipo Operação</label>
+      <select name="embarcador" >
+
+        <option value="AL">Tipo 1</option>
+        <option value="WY">Tipo 2</option>
+      </select>
+    </div>
+  </div>
+
+
+</app-modal-filtro>
+
+</body>
+<!-- <script>
+  var btn_pesquisar = document.querySelector('.btn_lupa_header_figma');
+  var filtros = document.querySelector('.container_filtros');
+  var btnfechar = document.querySelector('.btn_fechar');
+
+  btn_pesquisar.addEventListener('click', ()=>{
+      filtros.style.right = '0%';
+  });
+
+  btnfechar.addEventListener('click', ()=>{
+      filtros.style.right = '-20%';
+  });
+</script>
+
+
+<script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
+  <script type='text/javascript'>
+  google.charts.load('current', {
+  'packages': ['geochart'],
+  // Note: Because markers require geocoding, you'll need a mapsApiKey.
+  // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+  'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+  });
+  google.charts.setOnLoadCallback(drawMarkersMap);
+
+  function drawMarkersMap() {
+  var data = google.visualization.arrayToDataTable([
+      ['Country',   'Population', 'Area Percentage'],
+      ['France',  65700000, 50],
+      ['Germany', 81890000, 27],
+      ['Poland',  38540000, 23]
+  ]);
+
+  var options = {
+      sizeAxis: { minValue: 0, maxValue: 100 },
+      region: '005', // Western Europe
+      displayMode: 'markers',
+      colorAxis: {colors: ['#e7711c', '#4374e0']} // orange to blue
+  };
+
+  var chart = new google.visualization.GeoChart(document.getElementById('chart_div'));
+  chart.draw(data, options);
+  };
+  </script> -->
