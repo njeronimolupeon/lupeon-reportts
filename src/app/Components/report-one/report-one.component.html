@@ -20,7 +20,7 @@
       </div>
   </div>
   <div class="periodo">
-      <p>25/10/2022 à 30/10/2022</p>
+      <p style="color:rgb(150, 150 ,150)">25/10/2022 à 30/10/2022</p>
   </div>
   <div class="container_pesquisa_header_figma">
       <div class="corpo_pesquisa_header_figma" style="width: 100%;">
@@ -42,7 +42,7 @@
 <div class="container_header_charts">
   <div class="container_chart1">
       <div style="width: 100%; text-align:center; font-size: 0.775rem; margin-bottom: 1rem;">
-          <h4>Tipo Operação</h4>
+          <h4 style="color:rgb(150, 150 ,150)">Tipo Operação</h4>
       </div>
 
       <div class="container_grafic_tipoOperacao">
@@ -62,11 +62,11 @@
       <div class="corpo_container_grafic_card_figma_2_">
           <div style="width: 100%;">
               <div class="titulo_grafic_somafrete" style="font-size: 0.775rem;">
-                  <h4>Acumulado R$ Frete</h4>
+                  <h4 style="color:rgb(150, 150 ,150)">Acumulado R$ Frete</h4>
               </div>
               <div class="container_grafic_linha1">
                 <div class="desc-chart1">
-                  <h3>34 567</h3>
+                  <h4>34 567</h4>
                   <div class="porcentagem_grafic" style="background-color: var(--danger); color:white">
                     <img src="../../../assets/img/seta_baixo_figma.svg" alt=""><b> -4%</b></div>
                 </div>
@@ -83,16 +83,16 @@
           <div>
 
               <div class="titulo_grafic_somafrete" style="font-size: 0.775rem;">
-                  <h4>Acumulado % Custo de Frete</h4>
+                  <h4 style="color:rgb(150, 150 ,150)">Acumulado % Custo de Frete</h4>
               </div>
               <div class="container_grafic_linha1">
                 <div class="desc-chart1">
-                  <h3>34 567</h3>
+                  <h4>34 567</h4>
                   <div class="porcentagem_grafic" style="background-color: #0c6bff; color:white">
                     <img src="../../../assets/img/seta_cima_figma.svg" alt=""> <b> 4%</b></div>
                 </div>
-                <div class="myChart_figma_linha" style="margin-top: 1rem;">
-                  <canvas #myChartLinha2 id="myChartLinha2" height="90px"></canvas>
+                <div class="myChart_figma_linha" style="margin-top: 1rem; ">
+                  <canvas #myChartLinha2 id="myChartLinha2" height="115px" style="z-index: 1000;"></canvas>
                 </div>
               </div>
           </div>
@@ -101,7 +101,7 @@
 
   <div class="container_chart">
       <div style="width: 100%; text-align:center; font-size: 0.775rem;">
-          <h4>Fretes</h4>
+          <h4 style="color:rgb(150, 150 ,150)">Fretes</h4>
       </div>
 
       <div class="container_grafic_tipoOperacao" style="height: 100%">
@@ -162,9 +162,10 @@
       <tbody>
         <tr
           *ngFor="
-            let post of POSTS
+            let post1 of POSTS
               | paginate
                 : {
+                    id:'post1',
                     itemsPerPage: tableSize,
                     currentPage: page,
                     totalItems: count
@@ -172,23 +173,71 @@
             let i = index
           "
          >
-          <th class="td_linha_table" scope="row">{{ post.id }}</th>
-          <td class="td_linha_table">{{ post.id }}</td>
-          <td class="td_linha_table">{{ post.id }}</td>
-          <td class="td_linha_table">{{ post.id }}</td>
-          <td class="td_linha_table">{{ post.id }}</td>
+          <th class="td_linha_table">{{ post1.id }}</th>
+          <td class="td_linha_table">{{ post1.id }}</td>
+          <td class="td_linha_table">{{ post1.id }}</td>
+          <td class="td_linha_table">{{ post1.id }}</td>
+          <td class="td_linha_table">{{ post1.id }}</td>
         </tr>
+
       </tbody>
     </table>
-    <div class="d-flex justify-content-center pagination">
+
+
+
+
+    <div class="d-flex justify-content-center " style="display: flex;">
+      <div class="container_btn_exportar">
+        <button (click)="exportexcel()" class="corpo-btn-exportar">
+          <img src="../../../assets/img/icon-download.svg" />Exportar</button>
+      </div> <!--pagination-->
       <pagination-controls
-        previousLabel="Anterior"
-        nextLabel="Próximo"
+        previousLabel=""
+        nextLabel=""
+        [maxSize]="5"
+        id="post1"
         (pageChange)="onTableDataChange($event)"
+        class="my-pagination"
       >
       </pagination-controls>
     </div>
   </div>
+
+  <!---DIV OCULTA PARA EXPORTAÇÃO-->
+
+  <table class="table" id="excel-table" style="display: none;">
+    <thead class="container_th_linha_table">
+      <tr>
+        <th class="th_linha_table">Rótulos de Linha</th>
+        <th class="th_linha_table">Qtde</th>
+        <th class="th_linha_table">Soma de Mercadoria</th>
+        <th class="th_linha_table">Soma de Frete</th>
+        <th class="th_linha_table">Soma de % Frete/NF</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let post of POSTS_ocult
+            | paginate
+              : {
+                  id:'post_ocult',
+                  itemsPerPage: tableSize_ocult,
+                  currentPage: page_ocult,
+                  totalItems: count_ocult
+                };
+          let i = index
+        "
+       >
+        <th class="td_linha_table">{{ post.id }}</th>
+        <td class="td_linha_table">{{ post.id }}</td>
+        <td class="td_linha_table">{{ post.id }}</td>
+        <td class="td_linha_table">{{ post.id }}</td>
+        <td class="td_linha_table">{{ post.id }}</td>
+      </tr>
+
+    </tbody>
+  </table>
 
   <div class="relatorio_paginado">
 
@@ -206,12 +255,13 @@
       <tbody>
         <tr
           *ngFor="
-            let post of POSTS
+            let post of POSTS2
               | paginate
                 : {
-                    itemsPerPage: tableSize,
-                    currentPage: page,
-                    totalItems: count
+                    id:'post2',
+                    itemsPerPage: tableSize2,
+                    currentPage: page2,
+                    totalItems: count2
                   };
             let i = index
           "
@@ -224,16 +274,58 @@
         </tr>
       </tbody>
     </table>
-    <div class="d-flex justify-content-center pagination">
+
+    <div class="d-flex justify-content-center" style="display: flex;">
+      <div class="container_btn_exportar">
+        <button (click)="exportexcel2()" class="corpo-btn-exportar">
+          <img src="../../../assets/img/icon-download.svg" />Exportar</button>
+      </div>
       <pagination-controls
-        previousLabel="Anterior"
-        nextLabel="Próximo"
-        (pageChange)="onTableDataChange($event)"
+        previousLabel=""
+        nextLabel=""
+        [maxSize]="5"
+        id="post2"
+        (pageChange)="onTableDataChange2($event)"
+        class="my-pagination"
       >
       </pagination-controls>
     </div>
   </div>
 </div>
+
+<!--RELATORIO OCULTO PARA EXPORTAÇÃO 2-->
+
+<table class="table" id="excel-table-2" style="display: none;">
+  <thead class="container_th_linha_table">
+    <tr>
+      <th class="th_linha_table">Rótulos de Linha</th>
+      <th class="th_linha_table">Qtde</th>
+      <th class="th_linha_table">Soma de Mercadoria</th>
+      <th class="th_linha_table">Soma de Frete</th>
+      <th class="th_linha_table">Soma de % Frete/NF</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="
+        let post of POSTS_ocult2
+          | paginate
+            : {
+                itemsPerPage: tableSize_ocult2,
+                currentPage: page_ocult2,
+                totalItems: count_ocult2
+              };
+        let i = index
+      "
+     >
+      <th class="td_linha_table" scope="row">{{ post.id }}</th>
+      <td class="td_linha_table">{{ post.id }}</td>
+      <td class="td_linha_table">{{ post.id }}</td>
+      <td class="td_linha_table">{{ post.id }}</td>
+      <td class="td_linha_table">{{ post.id }}</td>
+    </tr>
+  </tbody>
+</table>
 
 <app-modal-filtro #modal>
   <button

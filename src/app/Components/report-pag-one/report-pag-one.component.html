@@ -1,0 +1,88 @@
+<div class="relatorio_paginado">
+
+  <table class="table">
+    <thead class="container_th_linha_table">
+      <tr>
+        <th class="th_linha_table">Rótulos de Linha</th>
+        <th class="th_linha_table">Qtde</th>
+        <th class="th_linha_table">Soma de Mercadoria</th>
+        <th class="th_linha_table">Soma de Frete</th>
+        <th class="th_linha_table">Soma de % Frete/NF</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let post1 of POSTS
+            | paginate
+              : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                };
+          let i = index
+        "
+       >
+        <th class="td_linha_table">{{ post1.id }}</th>
+        <td class="td_linha_table">{{ post1.id }}</td>
+        <td class="td_linha_table">{{ post1.id }}</td>
+        <td class="td_linha_table">{{ post1.id }}</td>
+        <td class="td_linha_table">{{ post1.id }}</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+
+
+
+  <div class="d-flex justify-content-center " style="display: flex;">
+    <div class="container_btn_exportar">
+      <button (click)="exportexcel()" class="corpo-btn-exportar">
+        <img src="../../../assets/img/icon-download.svg" />Exportar</button>
+    </div> <!--pagination-->
+    <pagination-controls
+      previousLabel=""
+      nextLabel=""
+      [maxSize]="5"
+      (pageChange)="onTableDataChange($event)"
+      class="my-pagination"
+    >
+    </pagination-controls>
+  </div>
+</div>
+
+<!---DIV OCULTA PARA EXPORTAÇÃO-->
+
+<!-- <table class="table" id="excel-table" style="display: none;">
+  <thead class="container_th_linha_table">
+    <tr>
+      <th class="th_linha_table">Rótulos de Linha</th>
+      <th class="th_linha_table">Qtde</th>
+      <th class="th_linha_table">Soma de Mercadoria</th>
+      <th class="th_linha_table">Soma de Frete</th>
+      <th class="th_linha_table">Soma de % Frete/NF</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="
+        let post of POSTS_ocult
+          | paginate
+            : {
+                itemsPerPage: tableSize_ocult,
+                currentPage: page_ocult,
+                totalItems: count_ocult
+              };
+        let i = index
+      "
+     >
+      <th class="td_linha_table">{{ post.id }}</th>
+      <td class="td_linha_table">{{ post.id }}</td>
+      <td class="td_linha_table">{{ post.id }}</td>
+      <td class="td_linha_table">{{ post.id }}</td>
+      <td class="td_linha_table">{{ post.id }}</td>
+    </tr>
+
+  </tbody>
+</table> -->

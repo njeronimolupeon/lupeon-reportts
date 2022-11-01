@@ -231,7 +231,9 @@ body{
 
 
 .myChart_figma_linha{
-  width: 65%;
+  width: 70%;
+  /* overflow: visible; */
+  /* position: absolute; */
 }
 
 .myChart_figma_fretes{
@@ -244,9 +246,15 @@ body{
   background-color: white;
   margin-left: 1rem;
   padding: 0rem 1rem;
-  font-size: 0.875rem;
+
   display: flex;
+  justify-content: center;
   align-items: center;
+}
+
+.periodo p{
+  font-weight: 600;
+  font-size: 0.8rem;
 }
 
 .container_filtros{
@@ -277,17 +285,18 @@ body{
 
 .container_relatorios_paginados, .container_mapas{
   width: 100%;
-  padding: 1rem;
+  padding: 1rem 0rem;
   display: flex;
   gap: 1rem;
+  background: white;
   margin: 1rem 0rem;
 }
 
 .relatorio_paginado, .container_mapa{
   width: 50%;
-  padding: 0.5rem;
+  padding: 0rem;
   text-align: center;
-  background: white;
+
   border-radius: 6px;
   /* height: 10rem; */
 }
@@ -295,22 +304,72 @@ body{
 .container_mapa{
   height: 20rem;
 }
+.container_content{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
 
 .container_th_linha_table{
-  background-color: #0D45F6;
+  background-color: white;
+  /* padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--gray-text); */
+}
+
+.border_table{
+  width: 95%;
+  margin: 0.5rem;
+  color:  #EBEBEB;
+}
+
+.my-pagination ::ng-deep .ngx-pagination .current {
+  background: #515251;
+}
+
+
+
+.my-pagination ::ng-deep .ngx-pagination{
+ padding: 1rem 0rem 0rem 0rem;
+ display: flex;
+ align-items: flex-end;
+ justify-content: flex-end;
+ font-size: 0.6rem;
+}
+
+.my-pagination2 ::ng-deep .ngx-pagination .current {
+  background: #515251;
+}
+
+.my-pagination2 ::ng-deep .ngx-pagination{
+  padding: 1rem 0rem 0rem 0rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  font-size: 0.6rem;
+ }
+
+.content{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+
 }
 
 .th_linha_table {
   font-size: 0.7rem;
   text-align: center;
-  color: white;
+  color: var(--gray-text);
   font-weight: 600;
-  padding: 0.4rem 1rem;
+  /* width: 20%; */
+  padding: 0rem 1rem;
 
 }
 
 .table{
-  padding: 0.5rem;
+  padding: 0rem;
+  /* background-color: blue; */
   margin: 0 auto;
 }
 
@@ -322,7 +381,52 @@ body{
   font-size: 0.7rem;
   text-align: center;
   padding-top: 0.4rem;
+  /* border-bottom:1px solid black; */
+  /* width: 20%; */
 }
+
+.container_btn_exportar{
+
+  width: 70%;
+  display: flex;
+  padding-left: 1rem;
+  align-items: center!important;
+  justify-content: left!important;
+}
+
+/* .btn_exportar_excel{
+  padding: 0.2rem 0.8rem;
+  background-color: transparent;
+  border-radius: 6px;
+  border: 1px solid var(--gray-4);
+  cursor: pointer;
+} */
+
+.corpo-btn-exportar {
+  border: 0.1rem solid #DCDCE0;
+  padding: 0.25rem 0.7rem;
+  border-radius: 6px;
+  background: transparent;
+  transition: 0.2s all;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.675rem;
+}
+
+  .corpo-btn-exportar:hover {
+      border: 0.1rem solid gray;
+      background: rgba(220,220,220, 0.2);
+      cursor: pointer;
+  }
+
+  .corpo-btn-exportar:focus {
+      outline: none;
+  }
+
+  .corpo-btn-exportar img {
+      width: 1rem;
+  }
 
 .pagination{
   padding-top: 1rem;
@@ -373,7 +477,7 @@ body{
 }
 
 .desc-chart1{
-  width: 40%;
+  width: 25%;
   display: flex;
   align-items: center;
   justify-content: center;
