@@ -231,7 +231,7 @@ body{
 
 
 .myChart_figma_linha{
-  width: 70%;
+  width: 65%;
   /* overflow: visible; */
   /* position: absolute; */
 }
@@ -443,7 +443,7 @@ body{
   padding: 1rem;
   display: flex;
   gap: 1rem;
-  background: #e9eaed;
+  background: whitesmoke;
   border-radius:3px;
   margin-top: 0.4rem;
 }
@@ -477,7 +477,7 @@ body{
 }
 
 .desc-chart1{
-  width: 25%;
+  width: 30%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -492,4 +492,43 @@ body{
   border-radius:12px;
   font-size: 0.675rem;
   padding:0.1rem 0.65rem;
+}
+
+.btn_fechar_modal{
+  padding: 0.4rem 0.45rem 0.2rem 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.btn_fechar_modal:hover{
+  opacity: 0.8;
+  background-color: rgb(240,240,240);
+}
+
+.select_padrao{
+  border: 1px solid #E3E4E8;
+  border-radius: 8px;
+}
+
+.select_padrao option{
+  border-radius: 8px;
+}
+
+.header_modal{
+  display: flex;
+
+}
+.container_btn{
+  width: 40%;
+}
+.header_modal h5{
+  width: 60%;
+  text-align: left;
+}
+
+.dropdown label{
+  font-size: 0.7rem;
+  font-weight: 600;
 }

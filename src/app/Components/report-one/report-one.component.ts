@@ -168,16 +168,35 @@ export class ReportOneComponent implements OnInit {
                   }
               },
               datalabels:{
+                // display:true,
                 font:{
-                  size: 7.5,
+                  size: 8,
                 },
 
-                color: 'rgb(100, 100, 100)',
-                align:'top',
+                color:'rgb(100, 100, 100)',
+
+                align: function(context){
+                  if(context.dataIndex == 0){
+                    return 'right'
+                  }else{
+                    return 'left'
+                  }
+                } ,
                 anchor:'end',
-                clamp: false,
+                // clamp:false,
+                // clip: false,
+                backgroundColor:function(context){
+                  if(context.dataIndex == 0){
+                    return '#FFFF'
+                  }else if (context.dataIndex == 4){
+                    return '#FFFF'
+                  }
+
+                  return ''
+                },
+                offset:-4.5,
+
                 formatter(value, context,) {
-                  console.log(value, context);
                   if(context.dataIndex == 0 || context.dataIndex == 4){
                     return new Intl.NumberFormat('pt-BR', {style:'currency', currency: 'BRL', maximumSignificantDigits: 3})
                     .format(value);
@@ -193,6 +212,7 @@ export class ReportOneComponent implements OnInit {
           scales: {
               x: {
                   display: false,
+
               },
               y: {
                   display: false,
@@ -251,6 +271,7 @@ export class ReportOneComponent implements OnInit {
             color: 'rgb(100, 100, 100)',
             align:'top',
             anchor:'end',
+            // padding:10,
             formatter(value, context,) {
               console.log(value, context);
               if(context.dataIndex == 0 || context.dataIndex == 6){
