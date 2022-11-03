@@ -9,6 +9,7 @@ import * as XLSX from 'xlsx';
 
 
 
+
 @Component({
   selector: 'app-report-one',
   templateUrl: './report-one.component.html',
@@ -57,6 +58,8 @@ export class ReportOneComponent implements OnInit {
   fileName="ExcelRelatorio1.xlsx"
   fileName2="ExcelRelatorio2.xlsx"
 
+
+
   ngOnInit(): void {
 
     this.fetchPosts_ocult();
@@ -68,6 +71,7 @@ export class ReportOneComponent implements OnInit {
     // Doughnut
 
 
+    let delayed = false;
     new Chart(this.elemento.nativeElement, {
       type:'doughnut',
 
@@ -81,7 +85,11 @@ export class ReportOneComponent implements OnInit {
         }],
 
       },
+
       options: {
+        animation:{
+          duration: 2000
+        },
 
         plugins: {
             filler: {
@@ -114,9 +122,11 @@ export class ReportOneComponent implements OnInit {
         scales: {
             x: {
                 display: false,
+                stacked:true
             },
             y: {
                 display: false,
+                stacked:true
             }
         }
         },
@@ -132,7 +142,9 @@ export class ReportOneComponent implements OnInit {
       // 'Setembro'
       ];
 
-      const dataLinha = {
+
+
+    const dataLinha = {
       labels: labelsLinha,
       datasets: [{
           backgroundColor: ['#0A2C5B'],
@@ -141,16 +153,22 @@ export class ReportOneComponent implements OnInit {
           pointBorderColor: '#126CFB',
           pointBackgroundColor: '#126CFB',
           borderColor:'#126CFB',
-          data: [459, 604, 426, 28, 70],
-    }]
+          data: [459, 604, 426, 28, 70]
+      }]
     };
 
-    new Chart(this.myChartLinha.nativeElement, {
+
+    // const animation =
+    const ctx = this.myChartLinha.nativeElement;
+    new Chart(ctx, {
       type: 'line',
       data: dataLinha,
       options: {
-          locale: 'pt-BR',
+          animation:{
+              easing: 'linear',
+              duration: 2000,
 
+          },
           plugins: {
 
               filler: {
@@ -212,15 +230,21 @@ export class ReportOneComponent implements OnInit {
           scales: {
               x: {
                   display: false,
+                  stacked:true
 
               },
               y: {
                   display: false,
-                  beginAtZero:true
+                  beginAtZero:true,
+                  stacked:true
               }
           }
         },
     })
+
+    const animation = {
+
+    };
 
     const labelsLinha2 = [
       'Março',
@@ -249,6 +273,18 @@ export class ReportOneComponent implements OnInit {
       type: 'bar',
       data: dataLinha2,
       options: {
+        animation:{
+          onComplete: () => {
+            delayed = true;
+          },
+          delay: (context) => {
+            let delay = 0;
+            if (context.type === 'data' && context.mode === 'default' && !delayed) {
+              delay = context.dataIndex * 600 + context.datasetIndex * 100;
+            }
+            return delay;
+          },
+        },
         plugins: {
           filler: {
               propagate: false,
@@ -295,9 +331,11 @@ export class ReportOneComponent implements OnInit {
           scales: {
               x: {
                   display: false,
+                  stacked:true
               },
               y: {
                   display: false,
+                  stacked:true
               }
           }
         },
@@ -338,7 +376,7 @@ export class ReportOneComponent implements OnInit {
           },
           {
 
-              data: [23.568, 10.751, 5.194, 193.459, 22.604, 400.426, 240.000],
+              data: [200.568, 100.751, 5.194, 193.459, 22.604, 400.426, 240.000],
               borderColor: 'rgba(19, 108, 251, 0.2)',
               backgroundColor: 'rgba(19, 108, 251, 0.2)',
               // typeDocument: 'line',
@@ -372,7 +410,21 @@ export class ReportOneComponent implements OnInit {
           ]
         },
         options: {
+          animation:{
+            onComplete: () => {
+              delayed = true;
+            },
+            delay: (context) => {
+              let delay = 0;
+              if (context.type === 'data' && context.mode === 'default' && !delayed) {
+                delay = context.dataIndex * 300 + context.datasetIndex * 100;
+              }
+              return delay;
+            },
+          },
             plugins: {
+
+
                 filler: {
                     propagate: false,
                 },
@@ -443,11 +495,14 @@ export class ReportOneComponent implements OnInit {
             scales: {
                 x: {
                     display: false,
+                    stacked:true
                 },
                 y: {
                     display: false,
-                    stacked:true
+                    stacked: true,
+
                 }
+
             }
           },
       })
@@ -476,6 +531,18 @@ export class ReportOneComponent implements OnInit {
           type: 'pie',
           data: dataPizza,
           options: {
+            animation:{
+              onComplete: () => {
+                delayed = true;
+              },
+              delay: (context) => {
+                let delay = 0;
+                if (context.type === 'data' && context.mode === 'default' && !delayed) {
+                  delay = context.dataIndex * 600 + context.datasetIndex * 100;
+                }
+                return delay;
+              },
+            },
               plugins: {
                   filler: {
                       propagate: false,
@@ -546,6 +613,10 @@ export class ReportOneComponent implements OnInit {
             type: 'bar',
             data: dataColum2,
             options: {
+              animation:{
+                duration: 2000,
+                easing:'easeInBack'
+              },
                 indexAxis: 'y',
                 plugins: {
                     filler: {
@@ -565,9 +636,11 @@ export class ReportOneComponent implements OnInit {
                 scales: {
                     x: {
                         display: true,
+                        stacked:true
                     },
                     y: {
                         display: true,
+                        stacked:true
                     }
                 }
                 },
