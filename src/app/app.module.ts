@@ -8,6 +8,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalFiltroComponent } from './Components/modal-filtro/modal-filtro.component';
 import { ReportPagOneComponent } from './Components/report-pag-one/report-pag-one.component';
+import { ReportCustoDeFreteComponent } from './Components/report-custo-de-frete/report-custo-de-frete.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ReportPagOneComponent } from './Components/report-pag-one/report-pag-on
     ReportOneComponent,
     ModalFiltroComponent,
     ReportPagOneComponent,
+    ReportCustoDeFreteComponent,
 
   ],
   imports: [

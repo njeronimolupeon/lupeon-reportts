@@ -1,0 +1,238 @@
+<body>
+
+
+  <div class="corpo_container_header_figma">
+    <div class="corpo_header_titulo_design">
+
+        <h4 class="font-tamanho-tt p_gerenciar_chamados">Custo de fretes</h4>
+        <div class="corpo_imgfundo_header_figma">
+            <img src="../../../assets/img/logo.svg" alt="Logo" width="110px" height="35px"/>
+        </div>
+    </div>
+    <div class="periodo">
+        <p style="color:rgb(150, 150 ,150)">25/10/2022 à 30/10/2022</p>
+    </div>
+    <div class="container_pesquisa_header_figma">
+        <div class="corpo_pesquisa_header_figma" style="width: 100%;">
+            <button type="submit" class="btn_lupa_header_figma" id="filtro" name="filtro" value="0">
+                <img src="../../../assets/img/search.svg" width="20px" />
+            </button>
+        </div>
+    </div>
+  </div>
+
+  <div class="container_header_charts">
+    <div class="container_chart1">
+        <div style="width: 100%; text-align:center; font-size: 0.775rem; margin-bottom: 1rem;">
+            <h4 style="color:rgb(150, 150 ,150)">Frete P/ Operação</h4>
+        </div>
+
+        <div class="container_grafic_tipoOperacao" style="display: flex; justify-content:center">
+            <!-- <div class="classificacao_grafic_tipoOperacao">
+                <p style="background-color: #0A2C5B;">Remessa</p>
+                <p style="background-color: #126CFB;">Reversa</p>
+                <p style="background-color: #5CC4FF;">Transferência</p>
+            </div> -->
+            <div class="myChart_figma">
+              <canvas #meuCanvasOne id="myChart"></canvas>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container_chart_">
+        <div class="corpo_container_grafic_card_figma_2_" style="margin-bottom: 0.7rem;">
+            <div style="width: 100%;">
+                <div class="titulo_grafic_somafrete" style="font-size: 0.775rem;">
+                    <h4 style="color:rgb(150, 150 ,150)">Volume docente</h4>
+                </div>
+                <div class="container_grafic_linha1">
+                  <div class="desc-chart1">
+                    <h4>R$ 34 567</h4>
+                    <div class="porcentagem_grafic" style="background-color: var(--danger); color:white">
+                      <img src="../../../assets/img/seta_baixo_figma.svg" alt=""><b> -4%</b></div>
+                  </div>
+                  <div class="myChart_figma_linha" style="margin-top: 1rem;">
+                      <canvas #myChartLinha id="myChartLinha" height="90px"></canvas>
+                  </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="corpo_container_grafic_card_figma_2_"  style="margin-top: 0.4rem;">
+            <div>
+
+                <div class="titulo_grafic_somafrete" style="font-size: 0.775rem;">
+                    <h4 style="color:rgb(150, 150 ,150)">Volume transportado</h4>
+                </div>
+                <div class="container_grafic_linha1">
+                  <div class="desc-chart1">
+                    <h4>34%</h4>
+                    <div class="porcentagem_grafic" style="background-color: #0c6bff; color:white">
+                      <img src="../../../assets/img/seta_cima_figma.svg" alt=""> <b> 4%</b></div>
+                  </div>
+                  <div class="myChart_figma_linha" style="margin-top: 1rem;">
+                    <canvas #myChartLinha3 id="myChartLinha3" height="115px" style="z-index: 1000;"></canvas>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container_chart_">
+      <div class="corpo_container_grafic_card_figma_2_" style="margin-bottom: 0.7rem;">
+          <div style="width: 100%;">
+              <div class="titulo_grafic_somafrete" style="font-size: 0.775rem;">
+                  <h4 style="color:rgb(150, 150 ,150)">% Frete/NFe</h4>
+              </div>
+              <div class="container_grafic_linha1">
+                <div class="desc-chart1">
+                  <h4>R$ 34 567</h4>
+                  <div class="porcentagem_grafic" style="background-color: var(--danger); color:white">
+                    <img src="../../../assets/img/seta_baixo_figma.svg" alt=""><b> -4%</b></div>
+                </div>
+                <div class="myChart_figma_linha" style="height: 100%;">
+                    <canvas #myChartColunas id="myChartColunas" height="130px"></canvas>
+                </div>
+              </div>
+          </div>
+
+
+      </div>
+
+      <div class="corpo_container_grafic_card_figma_2_"  style="margin-top: 0.4rem;">
+          <div>
+
+              <div class="titulo_grafic_somafrete" style="font-size: 0.775rem;">
+                  <h4 style="color:rgb(150, 150 ,150)">Frete volume</h4>
+              </div>
+              <div class="container_grafic_linha1">
+                <div class="desc-chart1">
+                  <h4>34%</h4>
+                  <div class="porcentagem_grafic" style="background-color: #0c6bff; color:white">
+                    <img src="../../../assets/img/seta_cima_figma.svg" alt=""> <b> 4%</b></div>
+                </div>
+                <div class="myChart_figma_linha" style="margin-top: 1rem; ">
+                  <canvas #myChartLinha2 id="myChartLinha2" height="115px" style="z-index: 1000;"></canvas>
+                </div>
+              </div>
+          </div>
+      </div>
+
+
+    </div>
+
+    <div class="container_chart">
+      <div class="container_grafic_tipoOperacao">
+          <div style="width: 100%;">
+              <canvas #myChartPizza id="myChartPizza"></canvas>
+          </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="container_frete_nfe_grafic">
+    <div class="header_frete_nfe_grafic">
+      <h4 style="color:rgb(150, 150 ,150)">Frete/NF</h4>
+    </div>
+    <div class="myChart_figma_linha2" style="height: 100%;">
+      <canvas #myChartColunas2 id="myChartColunas2" height="60px"></canvas>
+    </div>
+  </div>
+
+  <div class="container_frete_nfe_grafic">
+    <div class="header_frete_nfe_grafic">
+      <h4 style="color:rgb(150, 150 ,150)">Frete P/NP</h4>
+    </div>
+    <div class="myChart_figma_linha2" style="height: 100%;">
+      <canvas #myChartColunas3 id="myChartColunas3" height="60px"></canvas>
+    </div>
+  </div>
+
+  <div class="container_frete_nfe_grafic">
+    <div class="header_frete_nfe_grafic">
+      <h4 style="color:rgb(150, 150 ,150)">Frete P/Operação</h4>
+    </div>
+    <div class="myChart_figma_linha2" style="height: 100%;">
+      <canvas #myChartColunas4 id="myChartColunas4" height="60px"></canvas>
+    </div>
+  </div>
+  <div class="container_table_trasportadores">
+    <h4 style="color:rgb(150, 150 ,150); padding: 0.5rem;">Tabela transportadores</h4>
+    <table class="table_transportadores">
+      <thead>
+        <tr>
+          <td class="style_td">Transportadores</td>
+          <td class="style_td">Após</td>
+          <td class="style_td">Total NF</td>
+          <td class="style_td">Frete</td>
+          <td class="style_td">Indice % Frete/NFe</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="style_td_list">TRANSLOVATO</td>
+          <td class="style_td_list">50.000</td>
+          <td class="style_td_list">R$ 180.000,00</td>
+          <td class="style_td_list">R$ 100.000,00</td>
+          <td class="style_td_list">70%</td>
+        </tr>
+        <tr>
+          <td class="style_td_list">MERCADO LIVRE</td>
+          <td class="style_td_list">50.000</td>
+          <td class="style_td_list">R$ 180.000,00</td>
+          <td class="style_td_list">R$ 100.000,00</td>
+          <td class="style_td_list">70%</td>
+        </tr>
+        <tr>
+          <td class="style_td_list">SHOPPE</td>
+          <td class="style_td_list">50.000</td>
+          <td class="style_td_list">R$ 180.000,00</td>
+          <td class="style_td_list">R$ 100.000,00</td>
+          <td class="style_td_list">70%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="container_table_trasportadores">
+    <h4 style="color:rgb(150, 150 ,150); padding: 0.5rem;">Top 10 destinatários</h4>
+    <table class="table_transportadores">
+      <thead>
+        <tr>
+          <td class="style_td">Destinatários</td>
+          <td class="style_td">Viajens</td>
+          <td class="style_td">Total NF</td>
+          <td class="style_td">Frete</td>
+          <td class="style_td">Indice % Frete/NFe</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="style_td_list">ALLIED</td>
+          <td class="style_td_list">50.000</td>
+          <td class="style_td_list">R$ 180.000,00</td>
+          <td class="style_td_list">R$ 100.000,00</td>
+          <td class="style_td_list">70%</td>
+        </tr>
+        <tr>
+          <td class="style_td_list">HILTI</td>
+          <td class="style_td_list">50.000</td>
+          <td class="style_td_list">R$ 180.000,00</td>
+          <td class="style_td_list">R$ 100.000,00</td>
+          <td class="style_td_list">70%</td>
+        </tr>
+        <tr>
+          <td class="style_td_list">DAILUS</td>
+          <td class="style_td_list">50.000</td>
+          <td class="style_td_list">R$ 180.000,00</td>
+          <td class="style_td_list">R$ 100.000,00</td>
+          <td class="style_td_list">70%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
