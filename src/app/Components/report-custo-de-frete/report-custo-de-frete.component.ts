@@ -460,7 +460,7 @@ export class ReportCustoDeFreteComponent implements OnInit {
           datasets: [
             {
               // label: 'Dataset 1',
-              data: [43.568, 202.751, 266.194, 193.400, 224.604, 294.426, 249.728],
+              data: [20.568, 202.751, 266.194, 193.400, 224.604, 294.426, 249.728],
               borderColor: '#136CFB',
               backgroundColor: '#136CFB',
               stack: 'combined',
@@ -469,7 +469,7 @@ export class ReportCustoDeFreteComponent implements OnInit {
             },
             {
               // label: 'Dataset 2',
-              data: [23.568, 10.751, 5.194, 193.459, 22.604, 400.426, 240.000],
+              data: [230.568, 10.751, 5.194, 193.459, 22.604, 400.426, 240.000],
               borderColor: 'rgba(19, 108, 251, 0.2)',
               backgroundColor: 'rgba(19, 108, 251, 0.2)',
               stack: 'combined',
@@ -513,7 +513,7 @@ export class ReportCustoDeFreteComponent implements OnInit {
                   align:'top',
                   anchor:'end',
                   font:{
-                    size: 9
+                    size: 8
                   },
 
                   formatter: (value, ctx) => {
@@ -781,7 +781,7 @@ export class ReportCustoDeFreteComponent implements OnInit {
                   order:1
                 },
                 {
-                  data: [10.200, 43.568,43.568,23.568, 10.751,10.751,10.751, 5.194, 193.459, 22.604, 400.426, 240.000],
+                  data: [100.200, 43.568,43.568,23.568, 10.751,10.751,100.751, 5.194, 193.459, 22.604, 400.426, 240.000],
                   borderColor: 'rgba(19, 108, 251, 0.2)',
                   backgroundColor: 'rgba(19, 108, 251, 0.2)',
                   stack: 'combined',
